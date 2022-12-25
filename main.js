@@ -1,8 +1,10 @@
 const form = document.querySelector('#addForm');
 const items = document.querySelector('#items');
+const filter = document.querySelector('#filter');
 
 form.addEventListener('submit',addItem);
 items.addEventListener('click',removeItem);
+filter.addEventListener('keyup',filterItem);
 
 function addItem(e){
     e.preventDefault();
@@ -26,7 +28,7 @@ function addItem(e){
     editbtn.appendChild(document.createTextNode('edit'));
     //appendChild editbtn to li
     new_li.appendChild(editbtn);
-    
+
     //appendChild li to ul
     items.appendChild(new_li);
 }
@@ -38,4 +40,19 @@ function removeItem(e){
             items.removeChild(li);
         }
     }
+}
+
+function filterItem(e){
+    //console.log(filter.value.toLowerCase());
+    const text =filter.value.toLowerCase();
+    const li = items.getElementsByTagName('li');
+    Array.from(li).forEach((item)=>{
+        const itemText = item.firstChild.textContent;
+        if(itemText.toLowerCase().indexOf(text) != -1){
+            item.style.display='block';
+        }
+        else{
+            item.style.display='none';
+        }
+    });
 }
