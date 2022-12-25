@@ -19,6 +19,14 @@ function addItem(e){
     deletebtn.appendChild(document.createTextNode('X'));
     //appendChild deletebtn to li
     new_li.appendChild(deletebtn);
+
+    //create element, add className and appendChild the textNode
+    const editbtn = document.createElement('button');
+    editbtn.className='btn btn-primary btn-sm mr-1 float-right edit';
+    editbtn.appendChild(document.createTextNode('edit'));
+    //appendChild editbtn to li
+    new_li.appendChild(editbtn);
+    
     //appendChild li to ul
     items.appendChild(new_li);
 }
